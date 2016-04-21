@@ -139,7 +139,7 @@ if(!interactive()){
     run.trials(trial.code, expand.grid(side = c('left', 'right'),
                                        cue = c(1, 1),
                                        valid = c(0, 1, 1, 1)),
-               b = 2, n = 20, max.time = 15 * 60 * 1000)
+               b = 2, n = 20, record.session = T, max.time = 15 * 60 * 1000)
     quit("no")
 }else{
 USER.DATA = list(name = 'admin', age = 37, gender = 'M')
