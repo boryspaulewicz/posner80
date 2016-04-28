@@ -4,8 +4,8 @@ if(interactive())source('~/cs/code/r/tasks/task/task.R')
 TASK.NAME = 'posner80'
 
 MAX.REACTION.TIME = 3000
-PRE.FIXATION.TIME.MIN = 1000
-PRE.FIXATION.TIME.MAX = 2000
+PRE.FIXATION.TIME.MIN = 500 ## 1000
+PRE.FIXATION.TIME.MAX = 1000 ## 2000
 FIXATION.TIME = 1000
 POST.FIXATION.TIME = 100
 
@@ -126,7 +126,7 @@ if(!interactive())gui.user.data()
 
 gui.show.instruction("To zadanie polega na reagowaniu za pomocą klawiszy strzałek na pojawiające się\
 zielone prostokąty. Przez cały czas trwania zadania widoczne są dwie białe ramki, jedna po lewej,\
-a jedna po prawej stronie od środka ekranu. Czasem na środku między nimi pojawia się strzałka, a czasem krzyżyk.\
+a jedna po prawej stronie od środka ekranu. Na początku próby na środku między nimi pojawia się strzałka.\
 Po pewnym czasie od rozpoczęcia próby w środku jednej z ramek pojawia się zielony prostokąt.
 
 Jeżeli zielony prostokąt pojawił się po lewej stronie, należy szybko nacisnąć klawisz strzałka w lewo.
@@ -140,9 +140,9 @@ Należy reagować możliwie szybko i poprawnie.")
 if(!interactive()){
     ## 16 warunków
     run.trials(trial.code, expand.grid(side = c('left', 'right'),
-                                       cue = c(0, 1),
+                                       cue = c(1, 1),
                                        valid = c(0, 1, 1, 1)),
-               b = 2, n = 20, max.time = 20 * 60 * 1000, record.session = T)
+               b = 2, n = 20, max.time = 15 * 60 * 1000, record.session = T)
     quit("no")
 }else{
     USER.DATA = list(name = 'admin', age = 37, gender = 'M')
