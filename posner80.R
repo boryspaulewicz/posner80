@@ -2,7 +2,6 @@
 
 if(interactive())source('~/cs/code/r/tasks/task/task.R')
 TASK.NAME = 'posner80'
-if(interacive)db.connect(gui.get.value())
 
 MAX.REACTION.TIME = 3000
 PRE.FIXATION.TIME.MIN = 1000
