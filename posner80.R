@@ -1,5 +1,9 @@
 ## -*- coding: utf-8 -*-
 
+if(interactive())source('~/cs/code/r/tasks/task/task.R')
+TASK.NAME = 'posner80'
+if(interacive)db.connect(gui.get.value())
+
 MAX.REACTION.TIME = 3000
 PRE.FIXATION.TIME.MIN = 1000
 PRE.FIXATION.TIME.MAX = 2000
@@ -139,11 +143,12 @@ if(!interactive()){
     run.trials(trial.code, expand.grid(side = c('left', 'right'),
                                        cue = c(0, 1),
                                        valid = c(0, 1, 1, 1)),
-               b = 2, n = 20, max.time = 20 * 60 * 1000)
+               b = 2, n = 20, max.time = 20 * 60 * 1000, record.session = T)
     quit("no")
 }else{
-USER.DATA = list(name = 'admin', age = 37, gender = 'M')
+    USER.DATA = list(name = 'admin', age = 37, gender = 'M')
     run.trials(trial.code, expand.grid(side = c('left', 'right'),
                                        cue = c(0, 1),
-                                       valid = c(0, 1, 1, 1)), b = 1, n = 1)
+                                       valid = c(0, 1, 1, 1)),
+               b = 1, n = 1, record.session = T)
 }
