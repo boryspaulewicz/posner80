@@ -18,12 +18,18 @@ RECT$set.outline.thickness(WINDOW$get.size()[1] * .01)
 TXT$set.string("Proszę nacisnąć spację")
 center(TXT, WINDOW)
 FX = fixation(WINDOW)
-CUE = new(ConvexShape, 3)
-CUE$set.point(0, c(0, 0))
-CUE$set.point(1, c(.5, 2))
-CUE$set.point(2, c(-.5, 2))
-CUE$set.scale(WINDOW$get.size() * .02)
-center(CUE, WINDOW)
+CUER = new(ConvexShape, 3)
+CUER$set.point(0, c(-.5, .5))
+CUER$set.point(1, c(.5, 0))
+CUER$set.point(2, c(-.5, -.5))
+CUER$set.scale(WINDOW$get.size() * .02)
+center(CUER, WINDOW)
+CUEL = new(ConvexShape, 3)
+CUEL$set.point(0, c(.5, .5))
+CUEL$set.point(1, c(-.5, 0))
+CUEL$set.point(2, c(.5, -.5))
+CUEL$set.scale(WINDOW$get.size() * .02)
+center(CUEL, WINDOW)
 
 KEYS <<- c(Key.Left, Key.Right)
 
@@ -42,8 +48,9 @@ draw.stim = function(side){
 }
 
 draw.cue = function(side){
-    CUE$set.rotation(c(left = -90, right = 90)[side])
-    WINDOW$draw(CUE)
+    ## CUE$set.rotation(c(left = -180, right = 0)[side])
+    ## center(CUE, WINDOW)
+    WINDOW$draw(list(left = CUEL, right = CUER)[[side]])
 }
 
 trial.code = function(trial, side = sample(c('left', 'right'), 1),
@@ -124,18 +131,13 @@ Na przykład, Jan Kowalski urodzony 11 grudnia będzie miał identyfikator jk111
 
 if(!interactive())gui.user.data()
 
-gui.show.instruction("To zadanie polega na reagowaniu za pomocą klawiszy strzałek na pojawiające się\
-zielone prostokąty. Przez cały czas trwania zadania widoczne są dwie białe ramki, jedna po lewej,\
-a jedna po prawej stronie od środka ekranu. Na początku próby na środku między nimi pojawia się strzałka.\
-Po pewnym czasie od rozpoczęcia próby w środku jednej z ramek pojawia się zielony prostokąt.
+gui.show.instruction("To zadanie polega na reagowaniu za pomocą klawiszy strzałek na pojawiające się zielone prostokąty. Przez cały czas trwania zadania widoczne są dwie białe ramki, jedna po lewej, a jedna po prawej stronie od środka ekranu. Na początku próby na środku między nimi pojawia się strzałka. Po pewnym czasie od rozpoczęcia próby w środku jednej z ramek pojawia się zielony prostokąt.
 
 Jeżeli zielony prostokąt pojawił się po lewej stronie, należy szybko nacisnąć klawisz strzałka w lewo.
 
 Jeżeli zielony prostokąt pojawił się po prawej stronie, należy szybko nacisnąć klawisz strzałka w prawo.
 
-W trakcie badania proszę zachować ciszę.
-
-Należy reagować możliwie szybko i poprawnie.")
+W trakcie badania proszę zachować ciszę. Należy reagować możliwie szybko i poprawnie.")
 
 if(!interactive()){
     ## 16 warunków
